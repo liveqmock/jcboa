@@ -16,6 +16,14 @@ public class RoleData extends BaseAdminData {
 
 	private String description; // 描述
 
+	public RoleData() {
+		super();
+	}
+
+	public RoleData(Integer id) {
+		super.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}

@@ -25,7 +25,7 @@ public class BaseAdminData extends BaseData {
 	/**
 	 * 最后修改者
 	 */
-	protected AdminUserData lastUpdateAmdin;
+	protected AdminUserData lastUpdateAdmin;
 
 	public Integer getStatus() {
 		return status;
@@ -43,12 +43,12 @@ public class BaseAdminData extends BaseData {
 		this.createAdmin = createAdmin;
 	}
 
-	public AdminUserData getLastUpdateAmdin() {
-		return lastUpdateAmdin;
+	public AdminUserData getLastUpdateAdmin() {
+		return lastUpdateAdmin;
 	}
 
-	public void setLastUpdateAmdin(AdminUserData lastUpdateAmdin) {
-		this.lastUpdateAmdin = lastUpdateAmdin;
+	public void setLastUpdateAdmin(AdminUserData lastUpdateAdmin) {
+		this.lastUpdateAdmin = lastUpdateAdmin;
 	}
 
 }
