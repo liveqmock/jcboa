@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<!-- Configuring Login Interceptor -->
+	<!-- <bean id="commonInterceptor" class="com.template.interceptor.CommonInterceptor">
+		<property name="mappingURL" value=".*/entryOrJsonController\.do\?action=reg.*"/>
+	</bean>
+	
+	<aop:config>
+		<aop:pointcut id="commonPoint" expression="execution(public * com.template.controller.*.*(..)) " />
+		<aop:advisor pointcut-ref="commonPoint" advice-ref="commonInterceptor" />
+	</aop:config> -->
+	
+	<!-- 处理类级别上的@RequestMapping注解 -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="commonInterceptor"/>
+			</list>
+		</property>
+	</bean> -->
+	
+	<!-- 处理方法级别上的@RequestMapping注解 -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<util:list id="beanList">
+				<ref bean="mappingJacksonHttpMessageConverter"/>
+			</util:list>
+		</property>
+	</bean> -->
+
+</beans>

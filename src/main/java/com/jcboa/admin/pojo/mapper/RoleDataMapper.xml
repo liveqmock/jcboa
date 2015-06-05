@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jcboa.admin.dao.RoleDao">
+
+	<resultMap id="RoleData_Map" type="RoleData">
+		<id property="id" column="id" jdbcType="BIGINT"/>
+		<result property="name" column="name" jdbcType="VARCHAR"/>
+		<result property="description" column="description" jdbcType="VARCHAR"/>
+		
+		<result property="status" column="status" jdbcType="INTEGER"/>
+		<result property="createAdmin.id" column="create_admin_id" jdbcType="BIGINT"/>
+		<result property="lastUpdateAdmin.id" column="last_update_adminid" jdbcType="BIGINT"/>
+		<result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+		<result property="lastUpdateTime" column="last_update_time" jdbcType="TIMESTAMP"/>
+		<result property="createIp" column="create_ip" jdbcType="VARCHAR"/>
+		<result property="lastUpdateIp" column="last_update_ip" jdbcType="VARCHAR"/>
+		<result property="deleteState" column="delete_state" jdbcType="INTEGER"/>
+	</resultMap>
+
+	<!-- 根据ID查询 -->
+	<select id="queryById" parameterType="int" resultMap="RoleData_Map">
+		SELECT  * FROM t_role
+		<where>id=#{id} AND delete_state=1</where>
+	</select>
+
+</mapper>

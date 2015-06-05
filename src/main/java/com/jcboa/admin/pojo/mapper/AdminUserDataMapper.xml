@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jcboa.admin.dao.AdminUserDao">
+	
+	<!-- 表与实体关系映射 -->
+	<resultMap type="AdminUserData" id="AdminUserData_Map">
+		<id property="id" column="id" jdbcType="BIGINT" />
+		<result property="userName" column="user_name" jdbcType="VARCHAR"/>
+		<result property="password" column="password" jdbcType="VARCHAR"/>
+		<result property="sex" column="sex" jdbcType="INTEGER"/>
+		<result property="lastIp" column="last_ip" jdbcType="VARCHAR"/>
+		<result property="lastTime" column="last_time" jdbcType="TIMESTAMP"/>
+		<result property="realName" column="real_name" jdbcType="VARCHAR" />
+		<result property="telephone" column="telephone" jdbcType="VARCHAR"/>
+		<result property="qq" column="qq" jdbcType="VARCHAR"/>
+		<result property="email" column="email" jdbcType="VARCHAR"/>
+		<result property="card" column="card" jdbcType="VARCHAR"/>
+		<result property="remark" column="remark" jdbcType="VARCHAR"/>
+		
+		<result property="status" column="status" jdbcType="INTEGER"/>
+		<result property="createAdmin.id" column="create_admin_id" jdbcType="BIGINT"/>
+		<result property="lastUpdateAdmin.id" column="last_update_adminid" jdbcType="BIGINT"/>
+		<result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+		<result property="lastUpdateTime" column="last_update_time" jdbcType="TIMESTAMP"/>
+		<result property="createIp" column="create_ip" jdbcType="VARCHAR"/>
+		<result property="lastUpdateIp" column="last_update_ip" jdbcType="VARCHAR"/>
+		<result property="deleteState" column="delete_state" jdbcType="INTEGER"/>
+		
+		<association property="role" javaType="RoleData" column="role_id" select="com.jcboa.admin.dao.RoleDao.queryById" />
+	</resultMap>
+	
+	<!-- 查询全部 -->
+	<select id="query" parameterType="AdminUserData" resultMap="AdminUserData_Map">
+		select * from t_admin_user 
+		<where>
+			<if test="userName != null and userName !=''" >
+				and user_name = #{userName}
+			</if>
+			<if test="password != null and password !=''" >
+				and password=#{password}
+			</if>
+			<if test="sex != null" >
+				and sex=#{sex}
+			</if>
+			<if test="lastIp != null and lastIp !=''" >
+				and last_ip=#{lastIp}
+			</if>
+			<if test="role != null and role.id != null " >
+				and role_id=#{role.id}
+			</if>
+			<if test="lastTime != null " >
+				and last_time=#{lastTime}
+			</if>
+			<if test="realName != null and realName !=''" >
+				and real_name=#{realName}
+			</if>
+			<if test="telephone != null and telephone !=''" >
+				and telephone=#{telephone}
+			</if>
+			<if test="qq != null and qq !=''" >
+				and qq=#{qq}
+			</if>
+			<if test="email != null and email !=''" >
+				and email=#{email}
+			</if>
+			<if test="card != null and card !=''" >
+				and card=#{card}
+			</if>			
+			<if test="remark != null and remark != ''" >
+				and remark=#{remarkd}
+			</if>
+			<if test="status != null">
+				and status=#{status}
+			</if>
+			<if test="createAdmin != null and createAdmin.id != null" >
+				and create_admin_id=#{createAdmin.id}
+			</if>
+			<if test="lastUpdateAdmin != null and lastUpdateAdmin.id != null">
+				and last_update_adminid=#{lastUpdateAdmin.id}
+			</if>
+			<if test="createTime != null" >
+				and create_time=#{createTime}
+			</if>
+			<if test="lastUpdateTime != null" >
+				and last_update_time=#{lastUpdateTime}
+			</if>
+			<if test="createIp != null and createIp != ''" >
+				and create_ip=#{createIp}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''" >
+				and last_update_ip=#{lastUpdateIp}
+			</if>
+			<if test="deleteState != null" >
+				and delete_state=#{deleteState}
+			</if>
+		</where>
+	</select>
+
+</mapper>
